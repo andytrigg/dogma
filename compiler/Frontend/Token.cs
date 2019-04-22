@@ -6,9 +6,11 @@ namespace dogma.Frontend
         public Token(ISource source)
         {
             this.Source = source;
+            this.LineNumber = source.LineNumber;
         }
 
         protected ISource Source { get; private set; }
+        public int LineNumber { get; }
 
         public abstract void Extract();
     }

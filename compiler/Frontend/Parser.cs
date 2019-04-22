@@ -6,13 +6,14 @@ namespace dogma.Frontend
 {
     public abstract class Parser : MessageProducer
     {
-        private Scanner scanner;
         private IntermediateCode intermediateCode;
         private MessageHandler messageHandler = new MessageHandler();
 
+        protected Scanner Scanner { get; }
+
         public Parser(Scanner scanner)
         {
-            this.scanner = scanner;
+            this.Scanner = scanner;
             this.intermediateCode = null;
         }
 

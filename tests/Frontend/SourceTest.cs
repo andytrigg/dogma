@@ -24,7 +24,7 @@ namespace tests.Frontend
         [TestMethod]
         public void CurrentChar_WhenAtEndOfSource_ReturnsEof()
         {
-            new Source(new StringReader("")).CurrentChar().Should().Be(Source.EOF);
+            new Source(new StringReader("")).CurrentChar().Should().Be(Constants.EOF);
         }
 
         [TestMethod]
@@ -33,7 +33,7 @@ namespace tests.Frontend
             ISource source = new Source(new StringReader("A\nB"));
             source.NextChar();
             source.NextChar();
-            source.CurrentChar().Should().Be(Source.EOL);
+            source.CurrentChar().Should().Be(Constants.EOL);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace tests.Frontend
         {
             ISource source = new Source(new StringReader("A\nB"));
             source.NextChar();
-            source.NextChar().Should().Be(Source.EOL);
+            source.NextChar().Should().Be(Constants.EOL);
         }
 
         [TestMethod]
@@ -74,7 +74,7 @@ namespace tests.Frontend
             Source source = new Source(new StringReader("A"));
             source.NextChar();
             source.NextChar();
-            source.NextChar().Should().Be(Source.EOF);
+            source.NextChar().Should().Be(Constants.EOF);
         }
     }
 }

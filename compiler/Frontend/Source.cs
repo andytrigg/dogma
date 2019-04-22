@@ -4,16 +4,22 @@ using dogma.Message;
 
 namespace dogma.Frontend
 {
+    public static class Constants
+    {
+        public const char EOL = '\n';
+        public const char EOF = (char)0;
+    }
+
     public interface ISource
     {
         char NextChar();
         char CurrentChar();
+
+        int LineNumber { get; }
     }
 
     public class Source : ISource, MessageProducer
     {
-        public const char EOL = '\n';
-        public const char EOF = (char)0;
         public const int START_OF_LINE = -1;
         public const int START_OF_SOURCE = -2;
         private TextReader reader;
@@ -41,7 +47,7 @@ namespace dogma.Frontend
 
             if (Line != null) 
             { 
-                SendMessage(new Message(MessageType.SOURCE_LINE, new object[] { LineNumber, Line })); 
+                SendMessage(new Message.Message(MessageType.SOURCE_LINE, new object[] { LineNumber, Line })); 
             }
         }
 
@@ -49,11 +55,11 @@ namespace dogma.Frontend
         {
             if (Line == null)
             {
-                return EOF;
+                return Constants.EOF;
             }
             else if (LinePosition == START_OF_LINE || LinePosition == Line.Length)
             {
-                return EOL;
+                return Constants.EOL;
             }
             return Line[LinePosition];
         }

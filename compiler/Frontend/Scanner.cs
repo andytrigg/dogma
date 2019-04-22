@@ -1,14 +1,37 @@
-﻿using System;
-namespace dogma.Frontend
+﻿namespace dogma.Frontend
 {
     public abstract class Scanner
     {
         private Token currentToken;
-        private Source source;
 
-        public Scanner(Source source)
+        protected ISource Source { get; private set; }
+
+        public Scanner(ISource source)
         {
-            this.source = source;
+            this.Source = source;
+        }
+
+        public Token NextToken()
+        {
+            currentToken = ExtractToken();
+            return currentToken;
+        }
+
+        protected abstract Token ExtractToken();
+
+        public char CurrentChar()
+        {
+             return Source.CurrentChar();
+        }
+
+        public char NextChar()
+        {
+            return Source.NextChar();
         }
     }
 }
+
+
+
+
+    

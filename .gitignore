@@ -3,3 +3,7 @@
 ################################################################################
 
 /.vs/dogma/v15
+/compiler/bin/Debug/netcoreapp2.1
+/compiler/obj
+/tests/bin/Debug/netcoreapp2.1
+/tests/obj
