@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{3B34B703-473E-4ABF-AF6F-4A9ED46A2B0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dogma", "compiler\dogma.csproj", "{C7E71A28-0A4E-4EA8-A760-4FBB3FBEEA2C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B34B703-473E-4ABF-AF6F-4A9ED46A2B0D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3B34B703-473E-4ABF-AF6F-4A9ED46A2B0D}.Debug|x86.Build.0 = Debug|Any CPU
+		{3B34B703-473E-4ABF-AF6F-4A9ED46A2B0D}.Release|x86.ActiveCfg = Release|Any CPU
+		{3B34B703-473E-4ABF-AF6F-4A9ED46A2B0D}.Release|x86.Build.0 = Release|Any CPU
+		{C7E71A28-0A4E-4EA8-A760-4FBB3FBEEA2C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C7E71A28-0A4E-4EA8-A760-4FBB3FBEEA2C}.Debug|x86.Build.0 = Debug|Any CPU
+		{C7E71A28-0A4E-4EA8-A760-4FBB3FBEEA2C}.Release|x86.ActiveCfg = Release|Any CPU
+		{C7E71A28-0A4E-4EA8-A760-4FBB3FBEEA2C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
