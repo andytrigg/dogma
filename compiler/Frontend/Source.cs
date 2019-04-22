@@ -23,6 +23,7 @@ namespace dogma.Frontend
         public const int START_OF_LINE = -1;
         public const int START_OF_SOURCE = -2;
         private TextReader reader;
+        private MessageHandler messageHandler;
 
         public int LineNumber { get; private set; }
         private string Line { get; set; }
@@ -33,6 +34,7 @@ namespace dogma.Frontend
             this.LineNumber = 0;
             this.LinePosition = START_OF_SOURCE;
             this.reader = reader;
+            this.messageHandler = new MessageHandler();
         }
 
         private void ReadLine()
@@ -76,17 +78,17 @@ namespace dogma.Frontend
 
         public void AddMessageListener(MessageListener listener)
         {
-            throw new NotImplementedException();
+            messageHandler.AddListener(listener);
         }
 
         public void RemoveMessageListener(MessageListener listener)
         {
-            throw new NotImplementedException();
+            messageHandler.RemoveListener(listener);
         }
 
         public void SendMessage(Message.Message message)
         {
-            throw new NotImplementedException();
+            messageHandler.SendMessage(message);
         }
     }
 }
