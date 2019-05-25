@@ -1,10 +1,8 @@
-using dogma.Frontend;
 using dogma.Intermediate;
 using dogma.Message;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using tests.Frontend;
 
 namespace tests.Backend
 {
@@ -18,7 +16,7 @@ namespace tests.Backend
         {
         }
     }
-    
+
     [TestClass]
     public class BackendTest
     {
@@ -58,7 +56,7 @@ namespace tests.Backend
             var mockMessageHandler = new Mock<IMessageHandler>();
             var backend = new TestableBackend(mockMessageHandler.Object);
 
-            var message = Mock.Of<IMessage>();
+            var message = new dogma.Message.Message(MessageType.SYNTAX_ERROR, null);
             backend.SendMessage(message);
 
             mockMessageHandler.Verify(handler => handler.SendMessage(message));

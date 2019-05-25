@@ -6,6 +6,6 @@
 
         void RemoveMessageListener(IMessageListener listener);
 
-        void SendMessage(IMessage message);
+        void SendMessage(Message message);
     }
 }

@@ -6,7 +6,7 @@ namespace dogma.Message
     {
         void AddListener(IMessageListener listener);
         void RemoveListener(IMessageListener listener);
-        void SendMessage(IMessage message);
+        void SendMessage(Message message);
     }
 
     public class MessageHandler : IMessageHandler
@@ -28,7 +28,7 @@ namespace dogma.Message
             _messageListeners.Remove(listener);
         }
 
-        public void SendMessage(IMessage message)
+        public void SendMessage(Message message)
         {
             foreach (var listener in _messageListeners) listener.MessageReceived(message);
         }

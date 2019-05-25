@@ -1,4 +1,3 @@
-using System;
 using dogma.Frontend;
 using dogma.Message;
 using FluentAssertions;
@@ -57,7 +56,8 @@ namespace tests.Frontend
             var mockMessageHandler = new Mock<IMessageHandler>();
             var parser = new TestableParser(Mock.Of<IScanner>(), mockMessageHandler.Object);
 
-            var message = Mock.Of<IMessage>();
+            var message = new dogma.Message.Message(MessageType.SYNTAX_ERROR, null);
+            
             parser.SendMessage(message);
 
             mockMessageHandler.Verify(handler => handler.SendMessage(message));

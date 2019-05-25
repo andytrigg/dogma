@@ -1,10 +1,6 @@
 ﻿namespace dogma.Message
 {
-    public interface IMessage
-    {
-    }
-
-    public class Message : IMessage
+    public class Message
     {
         public readonly object Body;
         public readonly MessageType Type;

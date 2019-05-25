@@ -27,7 +27,7 @@ namespace dogma.Frontend
             _messageHandler.RemoveListener(listener);
         }
 
-        public void SendMessage(IMessage message)
+        public void SendMessage(Message.Message message)
         {
             _messageHandler.SendMessage(message);
         }

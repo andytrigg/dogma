@@ -16,7 +16,7 @@ namespace tests.Message
             messageHandler.AddListener(mockListenerOne.Object);
             messageHandler.AddListener(mockListenerTwo.Object);
 
-            var fakeMessage = Mock.Of<IMessage>();
+            var fakeMessage = new dogma.Message.Message(MessageType.SYNTAX_ERROR, null);
             messageHandler.SendMessage(fakeMessage);
             
             mockListenerOne.Verify(listener => listener.MessageReceived(fakeMessage), Times.Once);
@@ -31,10 +31,10 @@ namespace tests.Message
             messageHandler.AddListener(mockListenerOne.Object);
             messageHandler.RemoveListener(mockListenerOne.Object);
 
-            var fakeMessage = Mock.Of<IMessage>();
+            var fakeMessage = new dogma.Message.Message(MessageType.SYNTAX_ERROR, null);
             messageHandler.SendMessage(fakeMessage);
             
-            mockListenerOne.Verify(listener => listener.MessageReceived(It.IsAny<IMessage>()), Times.Never);
+            mockListenerOne.Verify(listener => listener.MessageReceived(fakeMessage), Times.Never);
         }
         
     }
