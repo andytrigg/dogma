@@ -7,3 +7,4 @@
 /compiler/obj
 /tests/bin/Debug/netcoreapp2.1
 /tests/obj
+/.idea
