@@ -106,21 +106,6 @@ namespace tests.Frontend.Pascal
             parser.Parse();
             
             mockMessageHandler.Verify(handler => handler.SendMessage(It.Is<dogma.Message.Message>(m => ((object[])m.Body).SequenceEqual(new object[] {0, 0L, expectedElapsedTime}))));
-        }         
-//            
-//        public override void Parse()
-//        {
-//            Token token;
-//
-//            var startTime = _timeProvider.NowAsUnixTimeMilliseconds();
-//            while (!((token = Scanner.NextToken()) is EofToken))
-//            {
-//            }
-//
-//            // Send the parser summary message. 
-//            SendMessage(new Message.Message(MessageType.PARSER_SUMMARY,
-//                );
-//        }
-        
+        }
     }
 }
