@@ -9,7 +9,7 @@
     {
         private Token _currentToken;
 
-        public Scanner(ISource source)
+        protected Scanner(ISource source)
         {
             Source = source;
         }

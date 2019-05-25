@@ -11,9 +11,9 @@ namespace tests.Frontend
         [TestMethod]
         public void Extract_ReturnsCharTokenFromSource()
         {
-            var expectedResult = Mock.Of<ISource>(x => x.NextChar() == 'A');
-
-            var charToken = new CharToken(expectedResult);
+            var mockSource = Mock.Of<ISource>(x => x.NextChar() == 'A');
+        
+            var charToken = new CharToken(mockSource);
 
             charToken.Extract();
 

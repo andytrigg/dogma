@@ -1,6 +1,6 @@
 ﻿namespace dogma.Frontend.Pascal
 {
-    internal class PascalScanner : Scanner
+    public class PascalScanner : Scanner
     {
         public PascalScanner(ISource source) : base(source)
         {
