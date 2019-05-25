@@ -36,6 +36,12 @@ namespace tests.Message
             
             mockListenerOne.Verify(listener => listener.MessageReceived(fakeMessage), Times.Never);
         }
+
+        [TestMethod]
+        public void ShouldFailToTestTravis()
+        {
+            Assert.Fail("Bang");
+        }
         
     }
 }
