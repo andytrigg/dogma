@@ -1,28 +1,27 @@
-﻿using System;
-using dogma.Intermediate;
+﻿using dogma.Intermediate;
 using dogma.Message;
 
 namespace dogma.Backend
 {
-    public abstract class Backend: MessageProducer
+    public abstract class Backend : IMessageProducer
     {
-        private readonly MessageHandler messageHandler = new MessageHandler();
+        private readonly MessageHandler _messageHandler = new MessageHandler();
 
         public void AddMessageListener(MessageListener listener)
         {
-            messageHandler.AddListener(listener);
+            _messageHandler.AddListener(listener);
         }
-
-        public abstract void Process(IntermediateCode iCode, SymbolTable symTab);
 
         public void RemoveMessageListener(MessageListener listener)
         {
-            messageHandler.RemoveListener(listener);
+            _messageHandler.RemoveListener(listener);
         }
 
-        public void SendMessage(Message.Message message)
+        public void SendMessage(IMessage message)
         {
-            messageHandler.SendMessage(message);
+            _messageHandler.SendMessage(message);
         }
+
+        public abstract void Process(IntermediateCode iCode, SymbolTable symTab);
     }
 }

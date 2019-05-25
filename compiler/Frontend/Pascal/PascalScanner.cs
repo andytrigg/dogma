@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace dogma.Frontend.Pascal
+﻿namespace dogma.Frontend.Pascal
 {
-    class PascalScanner : Scanner
+    internal class PascalScanner : Scanner
     {
         public PascalScanner(ISource source) : base(source)
         {
@@ -13,18 +9,14 @@ namespace dogma.Frontend.Pascal
         protected override Token ExtractToken()
         {
             Token token;
-            char currentChar = this.CurrentChar();
+            var currentChar = CurrentChar();
 
             // Construct the next token.  The current character determines the
             // token type.
             if (currentChar == Constants.EOF)
-            {
-                token = new EofToken(this.Source);
-            }
+                token = new EofToken(Source);
             else
-            {
                 token = new CharToken(Source);
-            }
 
             return token;
         }

@@ -1,13 +1,11 @@
-﻿using dogma.Message;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using dogma.Message;
 
 namespace dogma.Frontend.Pascal
 {
-    class PascalParserTD : Parser
+    internal class PascalParserTD : Parser
     {
-        public PascalParserTD(Scanner scanner) : base(scanner)
+        public PascalParserTD(IScanner scanner, IMessageHandler messageHandler) : base(scanner, messageHandler)
         {
         }
 
@@ -15,18 +13,20 @@ namespace dogma.Frontend.Pascal
         {
             Token token;
 
-            long startTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-            while (!((token = this.Scanner.NextToken()) is EofToken)) {
+            var startTime = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            while (!((token = Scanner.NextToken()) is EofToken))
+            {
             }
-            // Send the parser summary message. 
-            float elapsedTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - startTime)/1000f;
-            SendMessage(new Message.Message(MessageType.PARSER_SUMMARY, new object[] {token.LineNumber, GetErrorCount(), elapsedTime}));
 
+            // Send the parser summary message. 
+            var elapsedTime = (DateTimeOffset.Now.ToUnixTimeMilliseconds() - startTime) / 1000f;
+            SendMessage(new Message.Message(MessageType.PARSER_SUMMARY,
+                new object[] {token.LineNumber, GetErrorCount(), elapsedTime}));
         }
 
-        private long GetErrorCount()                 
+        private long GetErrorCount()
         {
             return 0;
         }
-    }  
+    }
 }

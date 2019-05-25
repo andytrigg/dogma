@@ -1,5 +1,4 @@
-﻿using System;
-namespace dogma.Intermediate
+﻿namespace dogma.Intermediate
 {
     public class IntermediateCode
     {

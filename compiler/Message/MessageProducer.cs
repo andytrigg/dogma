@@ -1,12 +1,11 @@
-﻿using System;
-namespace dogma.Message
+﻿namespace dogma.Message
 {
-    public interface MessageProducer
+    public interface IMessageProducer
     {
         void AddMessageListener(MessageListener listener);
 
         void RemoveMessageListener(MessageListener listener);
 
-        void SendMessage(Message message);
+        void SendMessage(IMessage message);
     }
 }

@@ -1,35 +1,35 @@
-﻿using System;
-using dogma.Intermediate;
+﻿using dogma.Intermediate;
 using dogma.Message;
 
 namespace dogma.Frontend
 {
-    public abstract class Parser : MessageProducer
+    public abstract class Parser : IMessageProducer
     {
-        private IntermediateCode intermediateCode;
-        private MessageHandler messageHandler = new MessageHandler();
+        private readonly IMessageHandler _messageHandler;
+        private IntermediateCode _intermediateCode;
 
-        protected Scanner Scanner { get; }
-
-        public Parser(Scanner scanner)
+        protected Parser(IScanner scanner, IMessageHandler messageHandler)
         {
-            this.Scanner = scanner;
-            this.intermediateCode = null;
+            _messageHandler = messageHandler;
+            Scanner = scanner;
+            _intermediateCode = null;
         }
+
+        protected IScanner Scanner { get; }
 
         public void AddMessageListener(MessageListener listener)
         {
-            messageHandler.AddListener(listener);
+            _messageHandler.AddListener(listener);
         }
 
         public void RemoveMessageListener(MessageListener listener)
         {
-            messageHandler.RemoveListener(listener);
+            _messageHandler.RemoveListener(listener);
         }
 
-        public void SendMessage(Message.Message message)
+        public void SendMessage(IMessage message)
         {
-            messageHandler.SendMessage(message);
+            _messageHandler.SendMessage(message);
         }
 
         public abstract void Parse();

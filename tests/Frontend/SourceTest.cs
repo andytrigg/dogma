@@ -1,8 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.IO;
 using dogma.Frontend;
-using Moq;
-using System.IO;
 using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace tests.Frontend
 {
@@ -71,7 +70,7 @@ namespace tests.Frontend
         [TestMethod]
         public void NextChar_WhenAtEndOfSource_ReturnsEof()
         {
-            Source source = new Source(new StringReader("A"));
+            var source = new Source(new StringReader("A"));
             source.NextChar();
             source.NextChar();
             source.NextChar().Should().Be(Constants.EOF);

@@ -1,15 +1,14 @@
-﻿using System;
-namespace dogma.Frontend
+﻿namespace dogma.Frontend
 {
     public abstract class Token
     {
         public Token(ISource source)
         {
-            this.Source = source;
-            this.LineNumber = source.LineNumber;
+            Source = source;
+            LineNumber = source.LineNumber;
         }
 
-        protected ISource Source { get; private set; }
+        protected ISource Source { get; }
         public int LineNumber { get; }
 
         public abstract void Extract();
@@ -23,7 +22,6 @@ namespace dogma.Frontend
 
         public override void Extract()
         {
-
         }
     }
 
@@ -37,7 +35,7 @@ namespace dogma.Frontend
 
         public override void Extract()
         {
-            Text = Char.ToString(this.Source.NextChar());
+            Text = char.ToString(Source.NextChar());
         }
     }
 }

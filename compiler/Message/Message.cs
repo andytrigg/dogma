@@ -1,12 +1,15 @@
-﻿using System;
-namespace dogma.Message
+﻿namespace dogma.Message
 {
-    public class Message
+    public interface IMessage
     {
-        public readonly MessageType Type;
-        public readonly object Body;
+    }
 
-        public Message(MessageType Type, Object Body)
+    public class Message : IMessage
+    {
+        public readonly object Body;
+        public readonly MessageType Type;
+
+        public Message(MessageType Type, object Body)
         {
             this.Type = Type;
             this.Body = Body;

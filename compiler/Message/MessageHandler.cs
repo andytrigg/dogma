@@ -1,13 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace dogma.Message
 {
-    public class MessageHandler
+    public interface IMessageHandler
     {
-        private List<MessageListener> messageListeners;
+        void AddListener(MessageListener listener);
+        void RemoveListener(MessageListener listener);
+        void SendMessage(IMessage message);
+    }
 
-        public MessageHandler() => messageListeners = new List<MessageListener>();
+    public class MessageHandler : IMessageHandler
+    {
+        private readonly List<MessageListener> messageListeners;
+
+        public MessageHandler()
+        {
+            messageListeners = new List<MessageListener>();
+        }
 
         public void AddListener(MessageListener listener)
         {
@@ -19,12 +28,9 @@ namespace dogma.Message
             messageListeners.Remove(listener);
         }
 
-        public void SendMessage(Message message)
+        public void SendMessage(IMessage message)
         {
-            foreach (MessageListener listener in messageListeners)
-            {
-                listener.MessageReceived(message);
-            }
+            foreach (var listener in messageListeners) listener.MessageReceived(message);
         }
     }
 }

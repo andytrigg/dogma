@@ -1,15 +1,20 @@
 ﻿namespace dogma.Frontend
 {
-    public abstract class Scanner
+    public interface IScanner
+    {
+        Token NextToken();
+    }
+
+    public abstract class Scanner : IScanner
     {
         private Token currentToken;
 
-        protected ISource Source { get; private set; }
-
         public Scanner(ISource source)
         {
-            this.Source = source;
+            Source = source;
         }
+
+        protected ISource Source { get; }
 
         public Token NextToken()
         {
@@ -21,7 +26,7 @@
 
         public char CurrentChar()
         {
-             return Source.CurrentChar();
+            return Source.CurrentChar();
         }
 
         public char NextChar()
@@ -30,8 +35,3 @@
         }
     }
 }
-
-
-
-
-    

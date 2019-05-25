@@ -1,5 +1,4 @@
-﻿using System;
-using dogma.Frontend;
+﻿using dogma.Frontend;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -12,10 +11,9 @@ namespace tests.Frontend
         [TestMethod]
         public void Extract_ReturnsCharTokenFromSource()
         {
-            Mock<ISource> expectedResult = new Mock<ISource>();
-            expectedResult.Setup(x => x.NextChar()).Returns('A');
+            var expectedResult = Mock.Of<ISource>(x => x.NextChar() == 'A');
 
-            CharToken charToken = new CharToken(expectedResult.Object);
+            var charToken = new CharToken(expectedResult);
 
             charToken.Extract();
 

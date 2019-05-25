@@ -1,8 +1,7 @@
-﻿using System;
-namespace dogma.Message
+﻿namespace dogma.Message
 {
     public interface MessageListener
     {
-        void MessageReceived(Message message);
+        void MessageReceived(IMessage message);
     }
 }
