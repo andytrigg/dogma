@@ -3,6 +3,7 @@ using dogma.Frontend;
 using dogma.Frontend.Pascal;
 using dogma.Message;
 using dogma.Timing;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
@@ -11,6 +12,49 @@ namespace tests.Frontend.Pascal
     [TestClass]
     public class PascalTopDownParserTest
     {
+        [TestMethod]
+        public void PascalTopDownParser_ShouldBeMessageProducer()
+        {
+            typeof(PascalTopDownParser).Should().Implement(typeof(IMessageProducer));
+        }
+
+        [TestMethod]
+        public void AddMessageListener_ShouldRegisterAMessageListener()
+        {
+            var mockMessageHandler = new Mock<IMessageHandler>();
+            var parser = new PascalTopDownParser(Mock.Of<IScanner>(), mockMessageHandler.Object, Mock.Of<ITimeProvider>());
+
+            var messageListener = Mock.Of<IMessageListener>();
+            parser.AddMessageListener(messageListener);
+
+            mockMessageHandler.Verify(handler => handler.AddListener(messageListener));
+        }
+
+        [TestMethod]
+        public void RemoveMessageListener_ShouldRemoveAMessageListener()
+        {
+            var mockMessageHandler = new Mock<IMessageHandler>();
+            var parser = new PascalTopDownParser(Mock.Of<IScanner>(), mockMessageHandler.Object, Mock.Of<ITimeProvider>());
+
+            var messageListener = Mock.Of<IMessageListener>();
+            parser.RemoveMessageListener(messageListener);
+
+            mockMessageHandler.Verify(handler => handler.RemoveListener(messageListener));
+        }
+
+        [TestMethod]
+        public void SendMessage_ShouldSendMessage()
+        {
+            var mockMessageHandler = new Mock<IMessageHandler>();
+            var parser = new PascalTopDownParser(Mock.Of<IScanner>(), mockMessageHandler.Object, Mock.Of<ITimeProvider>());
+
+            var message = new dogma.Message.Message(MessageType.SYNTAX_ERROR, null);
+            
+            parser.SendMessage(message);
+
+            mockMessageHandler.Verify(handler => handler.SendMessage(message));
+        }
+        
         [TestMethod]
         public void Parse_ShouldSendParserSummaryMessageWhenFinished()
         {
