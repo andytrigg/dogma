@@ -20,15 +20,15 @@ namespace dogma.Frontend
     {
         public const int START_OF_LINE = -1;
         public const int START_OF_SOURCE = -2;
-        private readonly MessageHandler messageHandler;
+        private readonly IMessageHandler _messageHandler;
         private readonly TextReader reader;
 
-        public Source(TextReader reader)
+        public Source(TextReader reader, IMessageHandler messageHandler)
         {
             LineNumber = 0;
             LinePosition = START_OF_SOURCE;
             this.reader = reader;
-            messageHandler = new MessageHandler();
+            _messageHandler = messageHandler;
         }
 
         private string Line { get; set; }
@@ -56,17 +56,17 @@ namespace dogma.Frontend
 
         public void AddMessageListener(MessageListener listener)
         {
-            messageHandler.AddListener(listener);
+            _messageHandler.AddListener(listener);
         }
 
         public void RemoveMessageListener(MessageListener listener)
         {
-            messageHandler.RemoveListener(listener);
+            _messageHandler.RemoveListener(listener);
         }
 
         public void SendMessage(IMessage message)
         {
-            messageHandler.SendMessage(message);
+            _messageHandler.SendMessage(message);
         }
 
         private void ReadLine()
