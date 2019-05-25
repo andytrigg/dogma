@@ -79,7 +79,7 @@ namespace tests.Frontend
         }
         
         [TestMethod]
-        public void Parser_ShouldBeMessageProducer()
+        public void Source_ShouldBeMessageProducer()
         {
             typeof(Source).Should().Implement(typeof(IMessageProducer));
         }

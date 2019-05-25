@@ -8,12 +8,6 @@ namespace tests.Message
     public class MessageHandlerTest
     {
         [TestMethod]
-        public void SendMessage_WhenNoListenersProvided_DoesNothing()
-        {
-            new MessageHandler().SendMessage(new dogma.Message.Message(MessageType.MISCELLANEOUS, null));
-        }
-
-        [TestMethod]
         public void SendMessage_WhenListenersProvided_NotifiesAllListeners()
         {
             var messageHandler = new MessageHandler();

@@ -5,7 +5,12 @@ namespace dogma.Backend
 {
     public abstract class Backend : IMessageProducer
     {
-        private readonly MessageHandler _messageHandler = new MessageHandler();
+        private readonly IMessageHandler _messageHandler;
+
+        protected Backend(IMessageHandler messageHandler)
+        {
+            _messageHandler = messageHandler;
+        }
 
         public void AddMessageListener(IMessageListener listener)
         {
