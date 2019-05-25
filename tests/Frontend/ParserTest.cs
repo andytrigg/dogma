@@ -33,7 +33,7 @@ namespace tests.Frontend
             var mockMessageHandler = new Mock<IMessageHandler>();
             var parser = new TestableParser(Mock.Of<IScanner>(), mockMessageHandler.Object);
 
-            var messageListener = Mock.Of<MessageListener>();
+            var messageListener = Mock.Of<IMessageListener>();
             parser.AddMessageListener(messageListener);
 
             mockMessageHandler.Verify(handler => handler.AddListener(messageListener));
@@ -45,7 +45,7 @@ namespace tests.Frontend
             var mockMessageHandler = new Mock<IMessageHandler>();
             var parser = new TestableParser(Mock.Of<IScanner>(), mockMessageHandler.Object);
 
-            var messageListener = Mock.Of<MessageListener>();
+            var messageListener = Mock.Of<IMessageListener>();
             parser.RemoveMessageListener(messageListener);
 
             mockMessageHandler.Verify(handler => handler.RemoveListener(messageListener));

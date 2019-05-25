@@ -7,12 +7,12 @@ namespace dogma.Backend
     {
         private readonly MessageHandler _messageHandler = new MessageHandler();
 
-        public void AddMessageListener(MessageListener listener)
+        public void AddMessageListener(IMessageListener listener)
         {
             _messageHandler.AddListener(listener);
         }
 
-        public void RemoveMessageListener(MessageListener listener)
+        public void RemoveMessageListener(IMessageListener listener)
         {
             _messageHandler.RemoveListener(listener);
         }

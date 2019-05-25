@@ -17,12 +17,12 @@ namespace dogma.Frontend
 
         protected IScanner Scanner { get; }
 
-        public void AddMessageListener(MessageListener listener)
+        public void AddMessageListener(IMessageListener listener)
         {
             _messageHandler.AddListener(listener);
         }
 
-        public void RemoveMessageListener(MessageListener listener)
+        public void RemoveMessageListener(IMessageListener listener)
         {
             _messageHandler.RemoveListener(listener);
         }

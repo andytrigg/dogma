@@ -2,9 +2,9 @@
 {
     public interface IMessageProducer
     {
-        void AddMessageListener(MessageListener listener);
+        void AddMessageListener(IMessageListener listener);
 
-        void RemoveMessageListener(MessageListener listener);
+        void RemoveMessageListener(IMessageListener listener);
 
         void SendMessage(IMessage message);
     }

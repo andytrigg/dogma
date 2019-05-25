@@ -4,33 +4,33 @@ namespace dogma.Message
 {
     public interface IMessageHandler
     {
-        void AddListener(MessageListener listener);
-        void RemoveListener(MessageListener listener);
+        void AddListener(IMessageListener listener);
+        void RemoveListener(IMessageListener listener);
         void SendMessage(IMessage message);
     }
 
     public class MessageHandler : IMessageHandler
     {
-        private readonly List<MessageListener> messageListeners;
+        private readonly List<IMessageListener> _messageListeners;
 
         public MessageHandler()
         {
-            messageListeners = new List<MessageListener>();
+            _messageListeners = new List<IMessageListener>();
         }
 
-        public void AddListener(MessageListener listener)
+        public void AddListener(IMessageListener listener)
         {
-            messageListeners.Add(listener);
+            _messageListeners.Add(listener);
         }
 
-        public void RemoveListener(MessageListener listener)
+        public void RemoveListener(IMessageListener listener)
         {
-            messageListeners.Remove(listener);
+            _messageListeners.Remove(listener);
         }
 
         public void SendMessage(IMessage message)
         {
-            foreach (var listener in messageListeners) listener.MessageReceived(message);
+            foreach (var listener in _messageListeners) listener.MessageReceived(message);
         }
     }
 }

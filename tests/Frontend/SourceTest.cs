@@ -90,7 +90,7 @@ namespace tests.Frontend
             var mockMessageHandler = new Mock<IMessageHandler>();
             var source = new Source(new StringReader("A"), mockMessageHandler.Object);
 
-            var messageListener = Mock.Of<MessageListener>();
+            var messageListener = Mock.Of<IMessageListener>();
             source.AddMessageListener(messageListener);
 
             mockMessageHandler.Verify(handler => handler.AddListener(messageListener));
@@ -102,7 +102,7 @@ namespace tests.Frontend
             var mockMessageHandler = new Mock<IMessageHandler>();
             var source = new Source(new StringReader("A"), mockMessageHandler.Object);
 
-            var messageListener = Mock.Of<MessageListener>();
+            var messageListener = Mock.Of<IMessageListener>();
             source.RemoveMessageListener(messageListener);
 
             mockMessageHandler.Verify(handler => handler.RemoveListener(messageListener));

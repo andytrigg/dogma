@@ -1,6 +1,6 @@
 ﻿namespace dogma.Message
 {
-    public interface MessageListener
+    public interface IMessageListener
     {
         void MessageReceived(IMessage message);
     }
