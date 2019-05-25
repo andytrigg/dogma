@@ -7,7 +7,7 @@
 
     public abstract class Scanner : IScanner
     {
-        private Token currentToken;
+        private Token _currentToken;
 
         public Scanner(ISource source)
         {
@@ -18,8 +18,8 @@
 
         public Token NextToken()
         {
-            currentToken = ExtractToken();
-            return currentToken;
+            _currentToken = ExtractToken();
+            return _currentToken;
         }
 
         protected abstract Token ExtractToken();
