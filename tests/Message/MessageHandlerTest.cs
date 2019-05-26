@@ -24,7 +24,7 @@ namespace tests.Message
         }
         
         [TestMethod]
-        public void SendMessage_WhenListenersRemoved_ShouldNotNotifyListners()
+        public void SendMessage_WhenListenersRemoved_ShouldNotNotifyListeners()
         {
             var messageHandler = new MessageHandler();
             var mockListenerOne = new Mock<IMessageListener>();

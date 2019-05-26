@@ -18,7 +18,7 @@ namespace dogma.Frontend
 
         public Parser CreateParser(string language, string type, ISource source)
         {
-            if ("pascal".Equals(language.ToLowerInvariant()) && "top-down".Equals(type.ToLowerInvariant()))
+            if ("pascal".Equals(language.ToLower()) && "top-down".Equals(type.ToLower()))
             {
                 return new PascalTopDownParser(new PascalScanner(source), _messageHandler, _timeProvider);
             }
